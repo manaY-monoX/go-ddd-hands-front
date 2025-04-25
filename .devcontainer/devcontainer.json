@@ -1,9 +1,9 @@
 {
-    "name": "GeWeb Front Exercise Project" ,
+    "name": "GoWeb Front Exercise Project" ,
     "dockerComposeFile":[
         "../docker-compose.yml"
     ],
-    "service":"goweb-front-exercise",
+    "service":"gowebapp-handson-frontend",
     "workspaceFolder": "/go/src/app",
     "customizations": {
         "vscode": {
