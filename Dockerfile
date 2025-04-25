@@ -4,4 +4,5 @@ RUN apt-get update && apt-get install -y git
 # アプリケーションのディレクトリを作成
 RUN mkdir /go/src/app
 WORKDIR /go/src/app
-ADD . /go/src/app
+# Volumeマウントと競合するためADDはコメントアウトしました。
+# ADD . /go/src/app

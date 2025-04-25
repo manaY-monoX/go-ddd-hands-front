@@ -5,7 +5,7 @@ services:
     build: .
     tty: true
     volumes:
-      - ./app:/go/src/app
+      - .:/go/src/
     ports:
       - 8081:8081
     networks:
