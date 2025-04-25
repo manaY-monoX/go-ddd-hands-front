@@ -6,7 +6,6 @@ services:
     tty: true
     volumes:
       - .:/go/src
-      - ./.git:/go/src/app/.git
     ports:
       - 8081:8081
     networks:
