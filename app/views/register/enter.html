@@ -1,0 +1,37 @@
+{{ extends "../layout/application.html" }}
+{{ block body() }}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <form action="/exercise/register" method="post">
+        <div class="row mb-3">
+            <div class="col-sm-4"><label for="productName" class="col-form-label">商品名:</label></div>
+            <div class="col-sm-8"><input type="text" class="form-control" id="productName" name="productName" placeholder="商品名を入力" required></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4"><label for="productPrice" class="col-form-label">単価:</label></div>
+            <div class="col-sm-8"><input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="単価を入力" required></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-4"><label for="category" class="col-form-label">カテゴリ:</label></div>
+            <div class="col-sm-8">
+                <select class="form-select" id="category"  name="category" required>
+                    <option value="" selected disabled>カテゴリを選択</option>
+                    {{ range category_list }}
+                    <option value="{{ .Id }}">{{ .Name }}</option>
+                    {{ end }}
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 text-right">
+              <button type="submit" class="btn btn-primary">登録</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+{{ end }}

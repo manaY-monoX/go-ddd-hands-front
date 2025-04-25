@@ -1,0 +1,31 @@
+{{ extends "../layout/application.html" }}
+{{ block body() }}
+<div class="jumbotron">
+    <div align="center">
+
+        {{ if isset(response) }}
+            {{ if isset(response.Product) }}
+                <div>
+                    <p class="mt-3">商品: {{ response.Product.Name }}を登録しました。</p>
+                </div>
+            {{ end }}
+            <!-- エラーメッセージ -->
+            {{ if isset(response.Error) }}
+                <div>
+                     <p class="text-danger mt-3">{{ response.Error.Message }}</p>
+                </div>
+            {{ end }}
+        {{ end }}
+    
+        <form action="/exercise/register" method="get">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">入力に戻る</button>
+                </div>
+              </div>
+        </form>
+
+    </form>
+    </div>
+</div>  
+{{ end }}

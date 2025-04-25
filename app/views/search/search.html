@@ -1,0 +1,51 @@
+{{ extends "../layout/application.html" }}
+{{ block body() }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="text-center">
+                <form class="form-inline d-inline-block my-2 my-lg-0" action="/exercise/search" method="post">
+                    <input type="search" class="form-control mr-sm-2" id="keyword" name="keyword" placeholder="キーワード" required>
+                    <button class="btn btn-primary" type="submit">検索</button>
+                </form>
+                <!-- レスポンスあり -->
+                {{ if isset(response) }}
+                    <!-- 検索結果の従業員あり-->
+                    {{ if isset(response.Products) && len(response.Products) > 0 }}
+                        <div class="mt-3">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No.</th>
+                                        <th scope="col">商品名</th>
+                                        <th scope="col">単価</th>
+                                        <th scope="col">カテゴリ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {{ range index,product := response.Products }}
+                                    <tr>
+                                        <td>{{ index + 1 }}</td>
+                                        <td>{{ product.Name }}</td>
+                                        <td>{{ formatCurrency(product.Price) }}</td>
+                                        <td>{{ product.Category.Name }}</td>
+                                    </tr>
+                                {{ end }}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{ end }}
+                    <!-- エラーメッセージ -->
+                    {{ if isset(response.Error) }}
+                        <div>
+                            <p class="text-danger mt-3">{{ response.Error.Message }}</p>
+                        </div>
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{{ end }}
