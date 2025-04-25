@@ -3,7 +3,7 @@
     "dockerComposeFile":[
         "../docker-compose.yml"
     ],
-    "service":"gowebapp-handson-frontend",
+    "service":"go-ddd-handson-frontend",
     "workspaceFolder": "/go/src/app",
     "customizations": {
         "vscode": {
